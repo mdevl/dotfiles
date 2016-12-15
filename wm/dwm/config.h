@@ -1,19 +1,16 @@
-/*
-	 DWM 6.1		
-   Config by pixxuser
-			
-*/			
+/* dwm 6.1 */
+
 #include <X11/XF86keysym.h>
-#include "restart.c"
-#include "zoomswap.c"
+#include "patches/restart.c"
+#include "patches/zoomswap.c"
 
 // Appearance
 #define NUMCOLORS 9
 static const char colors[NUMCOLORS][MAXCOLORS][9] = {
 //	   Border    Foreground	Background
-	{ "#464646", "#D0D0D0", "#2B2B2B" }, // Normal
-	{ "#E0E0E0", "#8C8C8C", "#2B2B2B" }, // Selected
-	{ "#E0E0E0", "#D0D0D0", "#2B2B2B" }, // Urgent
+	{ "#1c1c1c", "#D0D0D0", "#2D2D2D" }, // Normal
+	{ "#1c1c1c", "#8C8C8C", "#2D2D2D" }, // Selected
+	{ "#1c1c1c", "#D0D0D0", "#2D2D2D" }, // Urgent
 	{ "#212121", "#D0D0D0", "#2B2B2B" }, // Occupied
 	{ "#212121", "#ab7438", "#0b0606" }, // Yellow
 	{ "#212121", "#475971", "#0b0606" }, // Blue
@@ -22,23 +19,23 @@ static const char colors[NUMCOLORS][MAXCOLORS][9] = {
 	{ "#212121", "#cfa696", "#0b0606" }, // Grey
 };
 
-static const char *fonts[]			= {	"drift:pixelsize=10",
+static const char *fonts[]			= {	"metis:pixelsize=10",
                                                         "Siji"
 };
-static const unsigned int borderpx 		= 2;	// Border pixel of windows
-static const unsigned int snap 			= 8;	// Snap pixel
-static const unsigned int tagpadding 		= 15;	// Space between tags
-static const unsigned int tagspacing 		= 5;	// Inner padding of tags
-static const unsigned int gappx			= 10;	// Gaps pixel between windows
-static const unsigned int systraypinning 	= 0;	// 0 means sloppy systray follows selected monitor
-static const unsigned int systrayspacing 	= 0;	// Systray spacing 
-static const int systraypinningfailfirst 	= 1;	// 0 means display systray on the last monitor
-static const int showsystray 			= 1;	// 0 means no systray 
-static const Bool showbar 			= True;	// False means no bar
-static const Bool topbar 			= True;	// False means bottom bar
+static const unsigned int borderpx 		 = 2; // Border pixel of windows
+static const unsigned int snap 			 = 8; // Snap pixel
+static const unsigned int tagpadding 	 = 15; // Space between tags
+static const unsigned int tagspacing 	 = 5; // Inner padding of tags
+static const unsigned int gappx			 = 10; // Gaps pixel between windows
+static const unsigned int systraypinning = 0; // 0 means sloppy systray follows selected monitor
+static const unsigned int systrayspacing = 0; // Systray spacing 
+static const int systraypinningfailfirst = 1; // 0 means display systray on the last monitor
+static const int showsystray 			 = 1; // 0 means no systray 
+static const Bool showbar 			     = True; // False means no bar
+static const Bool topbar 			     = True; // False means bottom bar
 
 // Tags
-static const char *tags[] = { "MAIN  ", "WEB  ", "DEVEL  ", "TOOLS  " };
+static const char *tags[] = { " 1", "2", "3", "4" };
 
 static const Rule rules[] = {
 //	 Class		Instance    Title       Tags	      Isfloating   Monitor 
@@ -47,10 +44,10 @@ static const Rule rules[] = {
 };
 
 // Layout 
-#include "bstack.c"
-#include "bstackhoriz.c"
-#include "gaplessgrid.c"
-#include "horizgrid.c"
+#include "patches/bstack.c"
+#include "patches/bstackhoriz.c"
+#include "patches/gaplessgrid.c"
+#include "patches/horizgrid.c"
 
 static const float mfact     = 0.60; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
@@ -58,7 +55,7 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 //	 Symbol    Arrange function */
-	{ "",      tile },    // Default
+	{ "",      tile },    // Default
 	{ "",     NULL },    // Float
 	{ "",      monocle },
 	{ "",    bstack },

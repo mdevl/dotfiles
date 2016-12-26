@@ -1,14 +1,12 @@
 # Colors
-BLK='\e[0;30m'       # Black
-RED='\e[0;31m'       # Red
-GRN='\e[0;32m'       # Green
-YLW='\e[0;33m'       # Yellow
-BLE='\e[0;34m'       # Blue
-MAG='\e[0;35m'       # Purple
-CYN='\e[0;36m'       # Cyan
-WHT='\e[0;37m'       # White
-RST="\[$(tput sgr0)\]"
-#RST="\e[m"        # Reset
+R="\[$(tput setaf 1)\]"
+G="\[$(tput setaf 2)\]"
+Y="\[$(tput setaf 3)\]"
+M="\[$(tput setaf 5)\]"
+C="\[$(tput setaf 6)\]"
+W="\[$(tput setaf 7)\]"
+B="\[$(tput setaf 8)\]"
+N="\[$(tput sgr0)\]"
 
 # bash completion
 if ! shopt -oq posix; then
@@ -26,29 +24,16 @@ else
         export TERM='xterm-color'
 fi
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # Alias
 . $HOME/.bash_aliases
 
 # Prompt
-#PS1="[\u@\h][\W]\\$ ${RST}"
-#PS1="─────  ${RST} "
-PS1="\W »${RST} "
+#PS1="[\u@\h][\W]\\$ ${N}"
+#PS1="\w \n─────${N} "
+PS1="${G}─${N}───${G}─${N} "
+#PS1="\W »${N} "
+#PS1="${G}\W ${N}"
 
 # history length
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-export EDITOR=vim
-
